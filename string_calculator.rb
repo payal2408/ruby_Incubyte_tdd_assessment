@@ -15,6 +15,11 @@ class StringCalculator
     end
 
     num_array = numbers.split(delimiter).map(&:to_i)
+    negatives = num_array.select { |n| n < 0 }
+
+    if negatives.any?
+      raise "negative numbers not allowed: #{negatives.join(', ')}"
+    end
 
     num_array.sum
   end
